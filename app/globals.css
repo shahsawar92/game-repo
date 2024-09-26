@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Teko:wght@300..700&display=swap");
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: white !important;
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.rowdies-font {
+  font-family: "Rowdies", sans-serif !important;
+}
+
+.slick-dots li button:before {
+  color: white !important; /* Change the color of the dots */
+}
+
+/* Optional: Style active dot */
+.slick-dots .slick-active button:before {
+  color: white !important; /* Ensure active dot color is white */
+}
+
+.border-gradient {
+  border: 2px solid; /* Border width and style */
+  border-image-source: linear-gradient(
+    92.75deg,
+    #7209b7 0%,
+    rgba(67, 97, 238, 0) 45.87%,
+    #f72585 99.8%
+  ); /* Gradient colors */
+  border-image-slice: 1; /* Ensure the gradient applies to the border */
+}
+
+.button-gradient {
+  border: solid 1px transparent;
+  border-radius: 10px;
+  background: linear-gradient(
+    95.89deg,
+    #7209b7 -8.7%,
+    #4361ee 51.1%,
+    #f72585 110.89%
+  );
+  background-origin: border-box;
+  background-clip: padding-box;
+  padding: 8px 20px 8px 20px;
+  font-weight: bold;
+}
+
+.button-gradient-border {
+  border: double 2px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(#12152c, #12152c),
+    linear-gradient(95.89deg, #7209b7 -8.7%, #4361ee 51.1%, #f72585 110.89%);
+  background-origin: border-box;
+  background-clip: content-box, border-box, padding-box;
+  position: relative;
+}
+
+.gradient-background {
+  background-image: linear-gradient(
+    95.89deg,
+    #7209b7 -8.7%,
+    #4361ee 51.1%,
+    #f72585 110.89%
+  );
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
