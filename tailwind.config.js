@@ -11,6 +11,8 @@ module.exports = {
         primary: "#252849",
         secondary: "#1C1F38",
         tertiary: "#12152C",
+        lightgray: "#343651",
+        liteprpl: "#21243D",
       },
     },
   },
