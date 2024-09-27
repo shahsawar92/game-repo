@@ -29,13 +29,16 @@ export default function Login() {
       // Check if login is successful
       if (response.status === 200) {
         var user = response.data;
-        const token = response.data.token; // Assuming token is in response.data.token
-        localStorage.setItem("authToken", token);
+        const token = response.data.data.token; // Assuming token is in response.data.token
+        console.log('token is', token);
+        localStorage.setItem("kpobit_token", token);
+      
 
-        if(user.user_type==1)
-           router.push("/dashboard");
+        if(user.user_type==2)
+          router.push("landing-page");
         else
-        router.push("landing-page");
+          router.push("/dashboard");
+         
       
       }
     } catch (error) {

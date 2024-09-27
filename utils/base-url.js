@@ -1,0 +1,1 @@
+export const baseUrl = "https://kpboit.visionary.sa/storage/";

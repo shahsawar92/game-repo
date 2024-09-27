@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonBorder from "@/public/assets/button-border.png";
 import Image from "next/image";
 import HeroAdmin from "@/public/assets/hero-admin.png";
+import { post } from "@/utils/api";
+import Swal from "sweetalert2";
 
 // Define schema with Zod
 const schema = z
@@ -24,7 +26,7 @@ const schema = z
     path: ["confirmPassword"], // Path to the field where the error should be shown
   });
 
-export const AddAdmin = ({ onSubmit }) => {
+export const AddAdmin = ({onSubmit:submissionComplete}) => {
   const {
     register,
     handleSubmit,
@@ -32,6 +34,29 @@ export const AddAdmin = ({ onSubmit }) => {
   } = useForm({
     resolver: zodResolver(schema),
   });
+
+  // Handle form submission
+  const onSubmit = async (data) => {
+  try{
+      // Make the POST request to your API endpoint
+      const response = await post('/api/v1/admins', data);
+     
+        Swal.fire({
+          icon: 'success',
+          title: 'Admin added successfully',
+          text: response.data.message,
+        });   
+      submissionComplete();
+      
+  } catch(error){
+    console.log('error is:',error?.response?.data?.message);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error?.response?.data?.message,
+    });
+  }
+  };
 
   return (
     <div className="w-[95%] bg-[#00000020] shadow shadow-[#00000089] rounded-2xl mx-auto lg:flex flex-col lg:gap-10">

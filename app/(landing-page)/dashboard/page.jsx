@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardBorder from "@/public/assets/dashboard-border.png";
+import { get } from "@/utils/api";
 import {
   ChevronDown,
   ChevronUp,
@@ -12,21 +13,42 @@ import {
 } from "lucide-react";
 import { AddAdmin } from "@/components";
 import { useRouter } from "next/navigation";
+import  EditAdminModal from "@/components/admin/EditAdminModal";
+import AllAdmins from "./totalAdmins";
+import TotalCollections from "./totalCollections";
 
 export default function Dashboard() {
+  const [pageData, setPageData] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedButton, setSelectedButton] = useState("Total Admins");
   const [activeAccordion, setActiveAccordion] = useState(null);
-  const [showAddAdmin, setShowAddAdmin] = useState(false); // New state for showing AddAdmin component
+  const [showAddAdmin, setShowAddAdmin] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [currentAdmin, setCurrentAdmin] = useState(null);
+
+
   const router = useRouter();
 
   const buttonLabels = [
     "Total Admins",
-    "Total Users",
     "Total Collections",
     "Total Quizzes",
-    "Revenue Statistics",
+    "Total Games",
+    "Total Mini Games"
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await get("/api/v1/admins");
+        setPageData(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -34,6 +56,18 @@ export default function Dashboard() {
 
   const handleButtonClick = (label) => {
     setSelectedButton(label);
+    // Add logic for fetching filtered data for each tab here
+    if (label === "Total Admins") {
+      // Fetch and set admins data
+    } else if (label === "Total Users") {
+      // Fetch and set users data
+    } else if (label === "Total Collections") {
+      // Fetch and set collections data
+    } else if (label === "Total Quizzes") {
+      // Fetch and set quizzes data
+    } else if (label === "Revenue Statistics") {
+      // Fetch and set revenue statistics data
+    }
   };
 
   const handleAccordionClick = (index) => {
@@ -48,8 +82,33 @@ export default function Dashboard() {
     setShowAddAdmin(false);
   };
 
+  const handleEditClick = (admin) => {
+    // Logic for editing the admin
+    console.log("Edit admin:", admin);
+  };
+
+  const handleDeleteClick = (admin) => {
+    // Logic for deleting the admin
+    console.log("Delete admin:", admin);
+  };
+
+  // Utility function to calculate percentage
+  const calculateUsedPercentage = (used, total) => {
+    return (used / total) * 100;
+  };
+
+  // Utility function to format storage values
+  const formatStorage = (sizeInMB) => {
+    if (sizeInMB >= 1024) {
+      const sizeInGB = (sizeInMB / 1024).toFixed(2);
+      return `${sizeInGB} GB`;
+    }
+    return `${sizeInMB} MB`;
+  };
+
   return (
     <div className="relative mx-auto w-[90%] lg:w-auto lg:my-3">
+      
       <Image
         src={DashboardBorder}
         alt="border-image"
@@ -112,65 +171,19 @@ export default function Dashboard() {
             </div>
           )}
         </div>
-        <div className="h-px w-full lg:w-[90%] gradient-background"></div>
-        {!showAddAdmin && (
-          <div
-            className="self-end flex items-center gap-2 rounded-md font-bold tracking-tighter bg-[#7209B7] px-4 py-2 text-xs lg:text-xl cursor-pointer"
-            onClick={handleAddAdminClick}
-          >
-            <span className="text-md lg:text-3xl font-bold">+</span> Add Admin
-          </div>
-        )}
-        {showAddAdmin ? (
-          <AddAdmin onSubmit={onAddAdmin} />
-        ) : (
-          <div className="flex flex-col gap-3 w-full lg:h-[400px] overflow-y-scroll scrollbar-hide text-sm lg:text-md">
-            {[...Array(10)].map((item, index) => {
-              const isActive = activeAccordion === index;
-              return (
-                <div
-                  key={index}
-                  className="bg-[#d9d9d917] rounded-md p-2 lg:px-5 lg:py-5 flex flex-col lg:flex-row justify-between items-start lg:items-center"
-                >
-                  <div
-                    className="flex w-full justify-between items-center cursor-pointer lg:w-1/2"
-                    onClick={() => handleAccordionClick(index)}
-                  >
-                    <div className="flex gap-4 lg:justify-between w-full">
-                      <div>{index + 1}.</div>
-                      <div>Admin Name</div>
-                      <div className="hidden lg:block">email1234@gmail.com</div>
-                    </div>
-                    <div className="ml-auto lg:hidden">
-                      {isActive ? <ChevronUp /> : <ChevronDown />}
-                    </div>
-                  </div>
-                  <div
-                    className={`w-full lg:w-1/2 flex-col lg:flex-row gap-3 justify-end items-center mt-3 lg:mt-0 transition-all ${
-                      isActive ? "flex" : "hidden lg:flex"
-                    }`}
-                  >
-                    <div className="flex flex-col items-start lg:flex-row lg:items-center lg:gap-3 w-full">
-                      <div className="flex gap-3 w-full justify-between lg:justify-end">
-                        <div
-                          className={`block lg:hidden ${
-                            isActive ? "block" : "hidden"
-                          } lg:block`}
-                        >
-                          email1234@gmail.com
-                        </div>
-                        <div className="flex gap-3">
-                          <SquarePen />
-                          <Trash2 />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+          {
+            selectedButton === "Total Admins" && (
+              <AllAdmins />
+            )
+          }
+          {
+            selectedButton === "Total Collections" && (
+              <TotalCollections />
+            )
+          }
+
+
+        
       </div>
     </div>
   );
