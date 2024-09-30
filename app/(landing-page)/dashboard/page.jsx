@@ -13,9 +13,10 @@ import {
 } from "lucide-react";
 import { AddAdmin } from "@/components";
 import { useRouter } from "next/navigation";
-import  EditAdminModal from "@/components/admin/EditAdminModal";
+import EditAdminModal from "@/components/admin/EditAdminModal";
 import AllAdmins from "./totalAdmins";
 import TotalCollections from "./totalCollections";
+import Totalquizes from "./totalquizes";
 
 export default function Dashboard() {
   const [pageData, setPageData] = useState(null);
@@ -26,7 +27,6 @@ export default function Dashboard() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentAdmin, setCurrentAdmin] = useState(null);
 
-
   const router = useRouter();
 
   const buttonLabels = [
@@ -34,7 +34,7 @@ export default function Dashboard() {
     "Total Collections",
     "Total Quizzes",
     "Total Games",
-    "Total Mini Games"
+    "Total Mini Games",
   ];
 
   useEffect(() => {
@@ -108,7 +108,6 @@ export default function Dashboard() {
 
   return (
     <div className="relative mx-auto w-[90%] lg:w-auto lg:my-3">
-      
       <Image
         src={DashboardBorder}
         alt="border-image"
@@ -171,19 +170,9 @@ export default function Dashboard() {
             </div>
           )}
         </div>
-          {
-            selectedButton === "Total Admins" && (
-              <AllAdmins />
-            )
-          }
-          {
-            selectedButton === "Total Collections" && (
-              <TotalCollections />
-            )
-          }
-
-
-        
+        {selectedButton === "Total Admins" && <AllAdmins />}
+        {selectedButton === "Total Collections" && <TotalCollections />}
+        {selectedButton === "Total Quizzes" && <Totalquizes />}
       </div>
     </div>
   );

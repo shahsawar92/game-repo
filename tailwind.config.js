@@ -13,6 +13,7 @@ module.exports = {
         tertiary: "#12152C",
         lightgray: "#343651",
         liteprpl: "#21243D",
+        seagreen: "#1abfbf",
       },
     },
   },

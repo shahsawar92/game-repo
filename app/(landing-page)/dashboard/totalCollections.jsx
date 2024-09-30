@@ -40,8 +40,7 @@ const TotalCollections = () => {
         <span className="text-md lg:text-3xl font-bold">+</span> Add Admin
       </div>
 
-      {/* Scrollable Container */}
-      <div className="flex flex-col w-full bg-lightgray p-8 max-w-6xl overflow-y-auto h-screen">
+      <div className="flex flex-col w-full bg-lightgray p-8 max-w-6xl scrollbar-hide overflow-y-auto h-screen">
         <div className="flex flex-col w-full max-w-3xl rounded-xl p-4 border-gradient bg-liteprpl">
           <h1>Admin Name</h1>
           <p>email123@email.com</p>
@@ -118,46 +117,52 @@ const TotalCollections = () => {
         <h1 className="flex text-lg mt-5 ml-4 md:text-xl">Game Permissions</h1>
 
         <div className="flex w-full max-w-3xl mt-5 rounded-lg p-4 border-gradient bg-liteprpl">
-          <div className="flex gap-6 w-full">
-            <Image src={quizimage} alt="quizimage" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+            <div className="w-full sm:w-1/3">
+              <Image
+                src={quizimage}
+                alt="quizimage"
+                className="w-full h-auto object-cover"
+              />
+            </div>
             <div className="flex flex-col w-full">
-              <h1 className="text-white md:text-2xl font-bold">
+              <h1 className="text-white text-lg sm:text-2xl font-bold">
                 Quiz <span className="text-blue-500">Game</span>
               </h1>
-              <p className="text-xs font-medium text-gray-300">
+              <p className="text-xs sm:text-sm font-medium text-gray-300">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
                 unde.
               </p>
 
-              <div class="flex gap-6 text-white mt-5">
-                <label class="flex items-center space-x-2 cursor-pointer">
+              <div className="flex flex-wrap gap-2 sm:gap-4 text-white mt-5">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Visual Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Matching Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Audio Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
                   />
                   <span class="">True / False</span>
                 </label>
@@ -165,47 +170,54 @@ const TotalCollections = () => {
             </div>
           </div>
         </div>
+
         <div className="flex w-full max-w-3xl mt-5 rounded-lg p-4 border-gradient bg-liteprpl">
-          <div className="flex gap-6 w-full">
-            <Image src={mathimage} alt="quizimage" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+            <div className="w-full sm:w-1/3">
+              <Image
+                src={mathimage}
+                alt="mathimage"
+                className="w-full h-auto object-cover"
+              />
+            </div>
             <div className="flex flex-col w-full">
-              <h1 className="text-white md:text-2xl font-bold">
+              <h1 className="text-white text-lg sm:text-2xl font-bold">
                 Math <span className="text-blue-500">Game</span>
               </h1>
-              <p className="text-xs font-medium text-gray-300">
+              <p className="text-xs sm:text-sm font-medium text-gray-300">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
                 unde.
               </p>
 
-              <div class="flex gap-6 text-white mt-5">
-                <label class="flex items-center space-x-2 cursor-pointer">
+              <div className="flex flex-wrap gap-2 sm:gap-4 text-white mt-5">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Visual Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Matching Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Audio Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
                   />
                   <span class="">True / False</span>
                 </label>
@@ -213,47 +225,54 @@ const TotalCollections = () => {
             </div>
           </div>
         </div>
+
         <div className="flex w-full max-w-3xl mt-5 rounded-lg p-4 border-gradient bg-liteprpl">
-          <div className="flex gap-6 w-full">
-            <Image src={wordimage} alt="quizimage" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+            <div className="w-full sm:w-1/3">
+              <Image
+                src={wordimage}
+                alt="wordimage"
+                className="w-full h-auto object-cover"
+              />
+            </div>
             <div className="flex flex-col w-full">
-              <h1 className="text-white md:text-2xl font-bold">
+              <h1 className="text-white text-lg sm:text-2xl font-bold">
                 Word <span className="text-blue-500">Game</span>
               </h1>
-              <p className="text-xs font-medium text-gray-300">
+              <p className="text-xs sm:text-sm font-medium text-gray-300">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
                 unde.
               </p>
 
-              <div class="flex gap-6 text-white mt-5">
-                <label class="flex items-center space-x-2 cursor-pointer">
+              <div className="flex flex-wrap gap-2 sm:gap-4 text-white mt-5">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Visual Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Matching Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Audio Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
                   />
                   <span class="">True / False</span>
                 </label>
@@ -261,47 +280,54 @@ const TotalCollections = () => {
             </div>
           </div>
         </div>
+
         <div className="flex w-full max-w-3xl mt-5 rounded-lg p-4 border-gradient bg-liteprpl">
-          <div className="flex gap-6 w-full">
-            <Image src={puzzleimage} alt="quizimage" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+            <div className="w-full sm:w-1/3">
+              <Image
+                src={puzzleimage}
+                alt="puzzleimage"
+                className="w-full h-auto object-cover"
+              />
+            </div>
             <div className="flex flex-col w-full">
-              <h1 className="text-white md:text-2xl font-bold">
+              <h1 className="text-white text-lg sm:text-2xl font-bold">
                 Puzzle <span className="text-blue-500">Game</span>
               </h1>
-              <p className="text-xs font-medium text-gray-300">
+              <p className="text-xs sm:text-sm font-medium text-gray-300">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
                 unde.
               </p>
 
-              <div class="flex gap-6 text-white mt-5">
-                <label class="flex items-center space-x-2 cursor-pointer">
+              <div className="flex flex-wrap gap-2 sm:gap-4 text-white mt-5">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Visual Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Matching Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Audio Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
                   />
                   <span class="">True / False</span>
                 </label>
@@ -309,47 +335,54 @@ const TotalCollections = () => {
             </div>
           </div>
         </div>
+
         <div className="flex w-full max-w-3xl mt-5 rounded-lg p-4 border-gradient bg-liteprpl">
-          <div className="flex gap-6 w-full">
-            <Image src={matchimage} alt="quizimage" />
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+            <div className="w-full sm:w-1/3">
+              <Image
+                src={matchimage}
+                alt="matchimage"
+                className="w-full h-auto object-cover"
+              />
+            </div>
             <div className="flex flex-col w-full">
-              <h1 className="text-white md:text-2xl font-bold">
+              <h1 className="text-white text-lg sm:text-2xl font-bold">
                 Match Image <span className="text-blue-500">Game</span>
               </h1>
-              <p className="text-xs font-medium text-gray-300">
+              <p className="text-xs sm:text-sm font-medium text-gray-300">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
                 unde.
               </p>
 
-              <div class="flex gap-6 text-white mt-5">
-                <label class="flex items-center space-x-2 cursor-pointer">
+              <div className="flex flex-wrap gap-2 sm:gap-4 text-white mt-5">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Visual Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Matching Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none cursor-pointer"
                   />
                   <span class="">Audio Quiz</span>
                 </label>
 
-                <label class="flex items-center space-x-2 cursor-pointer">
+                <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    class=" h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
+                    className="h-5 w-5 border border-blue-500 rounded-md focus:outline-none cursor-pointer"
                   />
                   <span class="">True / False</span>
                 </label>
