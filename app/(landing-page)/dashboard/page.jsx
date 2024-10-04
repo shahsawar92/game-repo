@@ -111,7 +111,7 @@ export default function Dashboard() {
       <Image
         src={DashboardBorder}
         alt="border-image"
-        className="h-[500px] lg:h-[600px]"
+        className="h-[500px] lg:h-[600px] 2xl:w-[1800px] 2xl:h-[700px]"
       />
       <div
         onClick={() => {

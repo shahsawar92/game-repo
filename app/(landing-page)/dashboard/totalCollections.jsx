@@ -40,7 +40,7 @@ const TotalCollections = () => {
         <span className="text-md lg:text-3xl font-bold">+</span> Add Admin
       </div>
 
-      <div className="flex flex-col w-full bg-lightgray p-8 max-w-6xl scrollbar-hide overflow-y-auto h-screen">
+      <div className="flex flex-col w-full bg-lightgray p-8 max-w-7xl scrollbar-hide overflow-y-auto h-screen">
         <div className="flex flex-col w-full max-w-3xl rounded-xl p-4 border-gradient bg-liteprpl">
           <h1>Admin Name</h1>
           <p>email123@email.com</p>
