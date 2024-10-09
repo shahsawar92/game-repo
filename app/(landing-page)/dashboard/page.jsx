@@ -31,10 +31,9 @@ export default function Dashboard() {
 
   const buttonLabels = [
     "Total Admins",
-    "Total Collections",
-    "Total Quizzes",
-    "Total Games",
-    "Total Mini Games",
+    "All Games",
+   
+  
   ];
 
   useEffect(() => {
@@ -172,7 +171,7 @@ export default function Dashboard() {
         </div>
         {selectedButton === "Total Admins" && <AllAdmins />}
         {selectedButton === "Total Collections" && <TotalCollections />}
-        {selectedButton === "Total Quizzes" && <Totalquizes />}
+        {selectedButton === "All Games" && <Totalquizes />}
       </div>
     </div>
   );

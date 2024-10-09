@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Carousel } from "@/components";
@@ -8,8 +9,30 @@ import GradientLine2 from "@/public/assets/gradient-line2.png";
 import VideoCard1 from "@/public/assets/video-card1.png";
 import VideoCard2 from "@/public/assets/video-card2.png";
 import VideoCard3 from "@/public/assets/video-card3.png";
+import { useState, useEffect } from "react";
+import { get } from "@/utils/api";
+
 
 export default function Home() {
+
+  const [pageData, setPageData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await get("/api/v1/listGamesWithAccess/4");
+        console.log(data);
+        setPageData(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+
   return (
     <React.Fragment>
       <div className="w-[90%] mx-auto flex flex-col gap-10 pb-10">
@@ -32,9 +55,23 @@ export default function Home() {
           <div className="flex justify-center items-center gap-2 py-6">
             <Image alt="vector" src={GradientLine1} />
             <div className="pb-3 text-md lg:text-4xl font-extrabold">Games</div>
+          
             <Image alt="vector" src={GradientLine2} />
           </div>
-          <Carousel />
+
+          {pageData && pageData.data.length > 0 ? (
+
+
+          <Carousel  games={pageData.data} />
+
+        
+          ) : (
+            <div className="flex justify-center items-center">
+              <div className="text-xl font-bold">No games available</div>
+            </div>
+          )}
+
+
         </div>
       </div>
       <div className="flex flex-col bg-primary pt-10 pb-20">
