@@ -169,7 +169,7 @@ function Totalquizes() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 w-full max-w-xl mt-5 rounded-lg p-4 border-gradient bg-tertiary">
+        <div className="flex flex-col gap-4 w-full max-w-lg 2xl:max-w-2xl mt-5 rounded-lg p-4 border-gradient bg-tertiary">
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
             <div className="w-full sm:w-1/3">
               <Image
