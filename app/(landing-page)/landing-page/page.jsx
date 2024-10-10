@@ -39,7 +39,7 @@ export default function Home() {
         <div className="font-extrabold text-4xl lg:text-[80px] text-center leading-none px-[20px] lg:px-[250px] rowdies-font">
           Let the Game Begin
         </div>
-        <div className="relative h-[200px] lg:h-[500px] flex justify-center items-center ">
+        <div className="relative h-[200px] lg:h-[450px] 2xl:h-[700px] flex justify-center items-center ">
           <Image alt="landing-1" src={Landing1} fill className />
           <div className="absolute bottom-12 lg:bottom-28">
             {/* <Image
