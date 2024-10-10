@@ -8,39 +8,9 @@ import { useRouter } from "next/navigation";
 
 export const Navbar = () => {
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("kpobit_token");
-
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-
-    // Add event listener to listen to changes in localStorage
-    const handleStorageChange = () => {
-      const updatedToken = localStorage.getItem("kpobit_token");
-      if (updatedToken) {
-        setIsLoggedIn(true);
-        window.location.reload(); // Reload page after login
-      } else {
-        setIsLoggedIn(false);
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    // Cleanup the event listener
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
-
+ 
   const logOut = () => {
     localStorage.removeItem("kpobit_token");
-    setIsLoggedIn(false);
     router.push("/");
   };
 
@@ -57,9 +27,9 @@ export const Navbar = () => {
           />
         )} */}
 
-        {isLoggedIn && (
+        {/* { (
           <GradientBtn onClick={logOut} title={"Logout"} />
-        )}
+        )} */}
       </div>
     </div>
   );
