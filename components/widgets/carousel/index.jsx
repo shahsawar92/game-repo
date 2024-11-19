@@ -62,7 +62,7 @@ export const Carousel = ({ games }) => {
       {cardData.map((item, index) => (
         <div key={index} onClick={() => handleCardClick(item)} className="cursor-pointer"> {/* Add click handler */}
           <GameCard
-            src={"https://game.visionary.sa/storage/" + item.image} // Use the src property from cardData
+            src={"https://game.visionary.sa/" + item.image} // Use the src property from cardData
             alt="Card Image"
             title={item.name}
             description={item.description}
