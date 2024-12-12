@@ -42,28 +42,31 @@ export const Carousel = ({ games }) => {
   // Ensure that games is an array
   const cardData = games || [];
 
+  console.log(cardData);
+
   const handleCardClick = (item) => {
-   
-    let game_link = item.game_link==null ? 'https:game.com.pk' : item.game_link;
-    let token  =  localStorage.getItem("kpobit_token");
+    let game_link =
+      item.game_link == null ? "https:game.com.pk" : item.game_link;
+    let token = localStorage.getItem("kpobit_token");
 
     game_link = game_link + "?token=" + token;
     game_link = game_link + "&game_id=" + 5;
 
-      router.push(game_link); 
-    
+    router.push(game_link);
   };
 
   // Return null if the component is not mounted to prevent the error
   if (!isMounted) return null;
 
   return (
-    <Slider {...settings} className="lg:px-10" centerMode centerPadding="0px">
+    <Slider {...settings} className='lg:px-10' centerMode centerPadding='0px'>
       {cardData.map((item, index) => (
-        <div key={index} onClick={() => handleCardClick(item)} className="cursor-pointer"> {/* Add click handler */}
+        <div key={index}>
+          {" "}
+          {/* Add click handler */}
           <GameCard
-            src={"https://game.visionary.sa/" + item.image} // Use the src property from cardData
-            alt="Card Image"
+            src={"https://game.visionary.sa/" + item.image}
+            alt='Card Image'
             title={item.name}
             description={item.description}
             gametype={item.gametype} // Use the correct gametype from the item
@@ -71,6 +74,8 @@ export const Carousel = ({ games }) => {
             cost={item.cost} // Use the correct cost from the item
             width={300} // Specify a width for the image
             height={200} // Specify a height for the image
+            game_link={item.game_link}
+            id={item.id}
           />
         </div>
       ))}
