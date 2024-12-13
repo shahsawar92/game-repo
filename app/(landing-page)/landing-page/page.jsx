@@ -20,7 +20,6 @@ export default function Home() {
       ? JSON.parse(localStorage.getItem("game_user_data"))
       : null;
 
-  console.log("user data", user);
 
   useEffect(() => {
     const fetchData = async () => {
