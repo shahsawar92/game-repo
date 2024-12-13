@@ -16,8 +16,8 @@ axiosInstance.interceptors.request.use(
         // Check if running in a browser environment
         if (typeof window !== 'undefined') {
             // Client-side: Get token from localStorage
-            const token = localStorage.getItem("kpobit_token");
-            const user = JSON.parse(localStorage.getItem("kpobit_user")); // Get user info from localStorage
+            const token = localStorage.getItem("game_user_token");
+            const user = JSON.parse(localStorage.getItem("game_user_data")); // Get user info from localStorage
 
             if (token) {
                 config.headers.Authorization = `Bearer ${token}`;

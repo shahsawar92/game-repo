@@ -15,11 +15,17 @@ import { VideoComponent } from "@/components/widgets/video-card";
 
 export default function Home() {
   const [pageData, setPageData] = useState(null);
+  const user =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("game_user_data"))
+      : null;
+
+  console.log("user data", user);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await get("/api/v1/listGamesWithAccess/4");
+        const data = await get("/api/v1/listGamesWithAccess/" + user.id);
         console.log(data);
         setPageData(data);
       } catch (err) {

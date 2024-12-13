@@ -14,11 +14,13 @@ export const GameCard = ({
   width = 300,
   height = 200,
   game_link,
+  isNotLocked,
 }) => {
   const token = localStorage.getItem("kpobit_token");
   const gamelink = game_link == null ? "https:game.com.pk" : game_link;
   const game_link_token = gamelink + "?token=" + token;
   const game_link_with_id = game_link_token + "&game_id=" + id;
+
   return (
     <div className='px-2 '>
       <div className='relative flex flex-col gap-5 p-4 border-gradient bg-tertiary rounded-lg shadow-md h-[400px]'>
@@ -33,6 +35,11 @@ export const GameCard = ({
             // layout='fill'
             priority
           />
+          {!isNotLocked && (
+            <div className='absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
+              <Image src='/assets/lock.png' alt='Locked' layout='fill' />
+            </div>
+          )}
         </div>
 
         {/* Title and Description */}
@@ -46,11 +53,17 @@ export const GameCard = ({
 
         {/* Link Button */}
         <div className='flex justify-center'>
-          <Link
-            href={game_link_with_id}
-            className='w-full text-center py-3 bg-[#7B45D3] hover:bg-[#6939b5] transition text-white px-2 font-extrabold text-base rounded-lg'>
-            Edit
-          </Link>
+          {!isNotLocked ? (
+            <div className='w-full text-center py-3 bg-gray-400 text-white px-2 font-extrabold text-base rounded-lg cursor-not-allowed'>
+              Edit
+            </div>
+          ) : (
+            <Link
+              href={game_link_with_id}
+              className='w-full text-center py-3 bg-[#7B45D3] hover:bg-[#6939b5] transition text-white px-2 font-extrabold text-base rounded-lg'>
+              Edit
+            </Link>
+          )}
         </div>
 
         {/* Optional Details Section */}

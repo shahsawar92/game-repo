@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GameCard } from "@/components"; // Ensure GameCard is properly exported from this path
-import { useRouter } from "next/navigation"; // Use the new Next.js navigation import
+import { GameCard } from "@/components";
+import { useRouter } from "next/navigation";
 
 export const Carousel = ({ games }) => {
-  const router = useRouter(); // Initialize the router
-  const [isMounted, setIsMounted] = useState(false); // State to track if the component is mounted
-
+  const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+  console.log("games", games);
   useEffect(() => {
-    setIsMounted(true); // Set mounted to true after the component has mounted
+    setIsMounted(true);
   }, []);
 
   const settings = {
@@ -76,6 +76,7 @@ export const Carousel = ({ games }) => {
             height={200} // Specify a height for the image
             game_link={item.game_link}
             id={item.id}
+            isNotLocked={item.access}
           />
         </div>
       ))}
