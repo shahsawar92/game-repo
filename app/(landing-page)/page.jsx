@@ -46,7 +46,11 @@ export default function Login() {
         }
 
         Swal.fire("Success!", "Login successful!", "success");
-        router.push("/landing-page");
+        if (response.data.user_type === 1) {
+          router.push("/dashboard");
+        } else {
+          router.push("/landing-page");
+        }
       } else {
         Swal.fire("Error!", response.data.message || "Login failed.", "error");
       }
