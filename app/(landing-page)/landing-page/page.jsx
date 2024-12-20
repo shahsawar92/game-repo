@@ -20,7 +20,6 @@ export default function Home() {
       ? JSON.parse(localStorage.getItem("game_user_data"))
       : null;
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,8 +30,15 @@ export default function Home() {
         console.log(err);
       }
     };
+    const token =
+      //   typeof window !== "undefined" && localStorage.getItem("game_user_token");
+      // const rememberMe = localStorage.getItem("game_user_remember") === "true";
 
-    fetchData();
+      // if (!token && !rememberMe) {
+      //   router.push("/");
+      // } else {
+      fetchData();
+    // }
   }, []);
 
   return (

@@ -1,15 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LoginBorder from "@/public/assets/login-border.png";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import ButtonBorder from "@/public/assets/button-border.png";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import { setCookie } from "cookies-next";
 import Swal from "sweetalert2";
 import { post } from "@/utils/api";
+import { setCookie } from "cookies-next"; // Client-side cookie setting
+import {
+  IS_LOGGED_IN,
+  REMEMBER_ME,
+  USER_DATA,
+  USER_TOKEN,
+} from "@/components/constants/constants";
 
 export default function Login() {
   const {
@@ -18,24 +23,35 @@ export default function Login() {
     formState: { errors },
   } = useForm();
   const router = useRouter();
+  const [rememberMe, setRememberMe] = useState(false);
 
   const onSubmit = async (data) => {
     try {
       const response = await post("/api/login", data);
       if (response.success) {
         if (typeof window !== "undefined") {
-          localStorage.setItem("game_user_token", response.data.token);
-          localStorage.setItem("game_user_data", JSON.stringify(response.data));
+          localStorage.setItem(USER_DATA, JSON.stringify(response.data));
+          localStorage.setItem(USER_TOKEN, response.data.token);
+          setCookie(IS_LOGGED_IN, true);
+
+          if (rememberMe) {
+            localStorage.setItem(REMEMBER_ME, true);
+            setCookie(REMEMBER_ME, true, { maxAge: 30 * 24 * 60 * 60 });
+          } else {
+            localStorage.setItem(USER_DATA, JSON.stringify(response.data));
+            localStorage.setItem(USER_TOKEN, response.data.token);
+            localStorage.removeItem(REMEMBER_ME);
+            setCookie(REMEMBER_ME, false);
+          }
         }
 
         Swal.fire("Success!", "Login successful!", "success");
-        router.push("/dashboard");
+        router.push("/landing-page");
       } else {
         Swal.fire("Error!", response.data.message || "Login failed.", "error");
       }
     } catch (error) {
-      console.log("Error: ", error);
-
+      console.error("Error: ", error);
       Swal.fire(
         "Error!",
         error.response?.data?.message || "An error occurred.",
@@ -79,6 +95,17 @@ export default function Login() {
             {errors.password && (
               <p className='text-red-500 text-sm'>{errors.password.message}</p>
             )}
+          </div>
+          <div className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              id='rememberMe'
+              checked={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+            />
+            <label htmlFor='rememberMe' className='text-white text-sm'>
+              Remember Me
+            </label>
           </div>
           <button type='submit' className='relative w-full'>
             <Image

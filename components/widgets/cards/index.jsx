@@ -16,7 +16,7 @@ export const GameCard = ({
   game_link,
   isNotLocked,
 }) => {
-  const token = localStorage.getItem("kpobit_token");
+  const token = localStorage.getItem("game_user_token");
   const gamelink = game_link == null ? "https:game.com.pk" : game_link;
   const game_link_token = gamelink + "?token=" + token;
   const game_link_with_id = game_link_token + "&game_id=" + id;
