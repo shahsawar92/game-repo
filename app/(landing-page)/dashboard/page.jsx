@@ -17,6 +17,7 @@ import EditAdminModal from "@/components/admin/EditAdminModal";
 import AllAdmins from "./totalAdmins";
 import TotalCollections from "./totalCollections";
 import Totalquizes from "./totalquizes";
+import { USER_DATA } from "@/components/constants/constants";
 
 export default function Dashboard() {
   const [pageData, setPageData] = useState(null);
@@ -27,9 +28,22 @@ export default function Dashboard() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentAdmin, setCurrentAdmin] = useState(null);
 
+  const buttonLabels = ["Total Admins", "All Games"];
+
+  const unparsed_user =
+    typeof window !== "undefined" && localStorage.getItem(USER_DATA);
+  const user = JSON.parse(unparsed_user);
   const router = useRouter();
 
-  const buttonLabels = ["Total Admins", "All Games"];
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+
+    if (user.user_type !== 1) {
+      router.push("/landing-page");
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
