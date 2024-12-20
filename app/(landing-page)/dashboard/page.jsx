@@ -29,12 +29,7 @@ export default function Dashboard() {
 
   const router = useRouter();
 
-  const buttonLabels = [
-    "Total Admins",
-    "All Games",
-   
-  
-  ];
+  const buttonLabels = ["Total Admins", "All Games"];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,22 +101,22 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="relative mx-auto w-[90%] lg:w-auto lg:my-3">
+    <div className='relative mx-auto w-[90%] lg:w-auto lg:my-3'>
       <Image
         src={DashboardBorder}
-        alt="border-image"
-        className="h-[500px] lg:h-[600px] 2xl:w-[1800px] 2xl:h-[700px]"
+        alt='border-image'
+        className='h-[500px] lg:h-[600px] 2xl:w-[1800px] 2xl:h-[700px]'
       />
-      <div
+      {/* <div
         onClick={() => {
           router.push("/");
         }}
         className="z-20 absolute text-xs lg:text-lg items-center top-2 lg:top-5 flex gap-2 right-2 lg:right-5 cursor-pointer"
       >
         Logout <CirclePower />
-      </div>
-      <div className="flex flex-col gap-5 items-center inset-0 absolute justify-start p-5 lg:px-20 lg:py-10">
-        <div className="hidden lg:flex justify-evenly flex-wrap gap-5">
+      </div> */}
+      <div className='flex flex-col gap-5 items-center inset-0 absolute justify-start p-5 lg:px-20 lg:py-10'>
+        <div className='hidden lg:flex justify-evenly flex-wrap gap-5'>
           {buttonLabels.map((label, index) => (
             <div
               key={index}
@@ -130,26 +125,24 @@ export default function Dashboard() {
                   ? "button-gradient"
                   : "button-gradient-border"
               } flex justify-center w-[180px] h-[40px] cursor-pointer`}
-              onClick={() => handleButtonClick(label)}
-            >
-              <div className="absolute self-center">{label}</div>
+              onClick={() => handleButtonClick(label)}>
+              <div className='absolute self-center'>{label}</div>
             </div>
           ))}
         </div>
-        <div className="lg:hidden flex justify-center mt-5">
+        <div className='lg:hidden flex justify-center mt-5'>
           <button
             onClick={toggleDropdown}
-            className="button-gradient text-xs lg:text-lg flex justify-between items-center whitespace-nowrap relative"
-          >
+            className='button-gradient text-xs lg:text-lg flex justify-between items-center whitespace-nowrap relative'>
             {selectedButton}
             {isDropdownOpen ? (
-              <ChevronUp className="ml-2" />
+              <ChevronUp className='ml-2' />
             ) : (
-              <ChevronDown className="ml-2" />
+              <ChevronDown className='ml-2' />
             )}
           </button>
           {isDropdownOpen && (
-            <div className="absolute z-10 mt-10 rounded shadow-lg bg-gradient-to-r from-[#7209b7] via-[#4361ee] to-[#f72585]">
+            <div className='absolute z-10 mt-10 rounded shadow-lg bg-gradient-to-r from-[#7209b7] via-[#4361ee] to-[#f72585]'>
               <ul>
                 {buttonLabels.map((label, index) => (
                   <li
@@ -160,8 +153,7 @@ export default function Dashboard() {
                     onClick={() => {
                       handleButtonClick(label);
                       setIsDropdownOpen(false);
-                    }}
-                  >
+                    }}>
                     {label}
                   </li>
                 ))}
