@@ -45,7 +45,7 @@ export const GameCard = ({
         {/* Title and Description */}
         <div className='text-lg lg:text-2xl font-bold h-24'>
           {title}
-          <span className='text-[#7B45D3]'> Game</span>
+          {/* <span className='text-[#7B45D3]'> Game</span> */}
           <div className='text-xs font-light text-gray-200  mt-2'>
             {description}
           </div>
