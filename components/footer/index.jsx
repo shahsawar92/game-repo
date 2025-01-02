@@ -15,7 +15,7 @@ export const Footer = () => {
   return (
     <footer className='bg-tertiary w-full mt-10'>
       <div className='w-[80%] lg:w-full mx-auto flex lg:justify-around flex-wrap py-10 lg:py-20 gap-10'>
-        <div className='flex flex-col gap-4 w-full lg:w-[25%]'>
+        <div className='flex flex-col gap-4 w-full lg:w-1/2'>
           <div className='font-bold text-xl'>Contact Us</div>
           <div className='flex gap-2 items-center'>
             <Mail size={20} className='min-w-[20px] min-h-[20px]' />
@@ -27,12 +27,12 @@ export const Footer = () => {
               Kmoove 16 rue Cuvier Lyon 69006
             </span>
           </div>
-          <div className='flex gap-2 items-center'>
+          {/* <div className='flex gap-2 items-center'>
             <Phone size={20} className='min-w-[20px] min-h-[20px]' />
             <span>+02 5421234560</span>
-          </div>
+          </div> */}
         </div>
-        <div className='flex flex-col gap-4 w-full lg:w-[25%]'>
+        {/* <div className='flex flex-col gap-4 w-full lg:w-[25%]'>
           <div className='font-bold text-xl'>Newsletter</div>
           <form className='flex h-[30px] lg:h-[50px] text-xs lg:text-lg rounded-sm'>
             <input
@@ -50,7 +50,7 @@ export const Footer = () => {
             <Instagram size={20} />
             <Youtube size={20} />
           </div>
-        </div>
+        </div> */}
         <div className='relative flex items-center w-full lg:w-auto'>
           <Image
             src={Logo}
