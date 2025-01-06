@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { Carousel } from "@/components";
-import Landing1 from "@/public/assets/landing-1.png";
+import Landing1 from "@/public/assets/main.png";
 import JoinNowBtn from "@/public/assets/join-now-btn.png";
 import GradientLine1 from "@/public/assets/gradient-line1.png";
 import GradientLine2 from "@/public/assets/gradient-line2.png";
