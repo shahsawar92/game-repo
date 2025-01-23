@@ -97,54 +97,67 @@ const EditAdmin = ({ admin }) => {
     <>
       <div className='h-px w-full lg:w-[90%] gradient-background'></div>
       <div className='flex flex-col w-full bg-lightgray p-8 max-w-6xl scrollbar-hide overflow-y-auto h-screen'>
-        <div className='flex flex-col w-full max-w-3xl rounded-xl p-4 border-gradient bg-liteprpl'>
-          <div className='p-2 rounded-lg w-full max-w-md mt-7'>
-            <div className='flex justify-start gap-6 items-center mb-2'>
-              <span className='text-white font-semibold text-lg'>Storage</span>
-              <br />
+        <div className='flex justify-between items-start flex-col md:flex-row w-full'>
+          <div className='flex flex-col w-full max-w-3xl rounded-xl p-4 border-gradient bg-liteprpl'>
+            <div className='p-2 rounded-lg w-full max-w-md mt-7'>
+              <div className='flex justify-start gap-6 items-center mb-2'>
+                <span className='text-white font-semibold text-lg'>
+                  Storage
+                </span>
+                <br />
 
-              <div className='relative'>
-                <select
-                  className='block cursor-pointer w-full appearance-none bg-gray-800 border border-teal-400 text-white py-1 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400'
-                  value={selectedStorage} // Set the selected value in GB
-                  onChange={handleStorageChange} // Handle change event
-                >
-                  {Array.from({ length: 10 }, (_, index) => (
-                    <option key={index} value={(index + 1) * 1024}>
-                      {index + 1} GB
-                    </option>
-                  ))}
-                </select>
+                <div className='relative'>
+                  <select
+                    className='block cursor-pointer w-full appearance-none bg-gray-800 border border-teal-400 text-white py-1 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400'
+                    value={selectedStorage} // Set the selected value in GB
+                    onChange={handleStorageChange} // Handle change event
+                  >
+                    {Array.from({ length: 10 }, (_, index) => (
+                      <option key={index} value={(index + 1) * 1024}>
+                        {index + 1} GB
+                      </option>
+                    ))}
+                  </select>
 
-                <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400'>
-                  <svg
-                    className='fill-current h-4 w-4'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 20 20'>
-                    <path d='M5.58 7.58a1 1 0 011.4 0L10 10.59l3.02-3.02a1 1 0 111.4 1.42l-3.72 3.72a1 1 0 01-1.4 0L5.58 8.99a1 1 0 010-1.42z' />
-                  </svg>
+                  <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400'>
+                    <svg
+                      className='fill-current h-4 w-4'
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 20 20'>
+                      <path d='M5.58 7.58a1 1 0 011.4 0L10 10.59l3.02-3.02a1 1 0 111.4 1.42l-3.72 3.72a1 1 0 01-1.4 0L5.58 8.99a1 1 0 010-1.42z' />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className='w-full bg-gray-700 rounded-full h-3'>
-              <div
-                className='bg-blue-500 h-3 rounded-full'
-                style={{
-                  width: `${calculateUsedPercentage(
-                    admin.storage_used,
-                    pageData?.storage_total || admin.storage_total
-                  )}%`,
-                }}></div>
-            </div>
-            <div className='flex justify-between items-center mt-1 text-xs text-gray-400'>
-              <span>
-                {formatStorage(admin.storage_used.toFixed(2))} /{" "}
-                {selectedStorage / 1024} GB
-              </span>
+              <div className='w-full bg-gray-700 rounded-full h-3'>
+                <div
+                  className='bg-blue-500 h-3 rounded-full'
+                  style={{
+                    width: `${calculateUsedPercentage(
+                      admin.storage_used,
+                      pageData?.storage_total || admin.storage_total
+                    )}%`,
+                  }}></div>
+              </div>
+              <div className='flex justify-between items-center mt-1 text-xs text-gray-400'>
+                <span>
+                  {formatStorage(admin.storage_used.toFixed(2))} /{" "}
+                  {selectedStorage / 1024} GB
+                </span>
+              </div>
             </div>
           </div>
+          {/* change password button */}
+          <div className='flex flex-col max-w-3xl rounded-xl p-4 '>
+            <button
+              onClick={() => {
+                router.push(`/change-password/${admin.id}`);
+              }}
+              className='flex justify-center items-center gap-2 border-gradient bg-liteprpl p-3 text-white rounded-md w-full py-2'>
+              Change Password
+            </button>
+          </div>
         </div>
-
         <h1 className='flex text-lg mt-5 ml-4 md:text-xl'>Game Permissions</h1>
 
         {pageData && pageData.data.length > 0 ? (
