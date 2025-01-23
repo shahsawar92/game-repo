@@ -4,7 +4,7 @@ const EditAdminModal = ({ admin, onClose, onSave }) => {
   const [formData, setFormData] = useState({
     name: admin?.name,
     email: admin?.email,
-    // add other fields here
+    // add other fields here ...
   });
 
   const handleChange = (e) => {
