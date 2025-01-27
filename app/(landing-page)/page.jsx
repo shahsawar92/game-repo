@@ -28,6 +28,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       const response = await post("/api/login", data);
+      console.log("Response: ", response);
       if (response.success) {
         if (typeof window !== "undefined") {
           localStorage.setItem(USER_DATA, JSON.stringify(response.data));
@@ -52,13 +53,13 @@ export default function Login() {
           router.push("/landing-page");
         }
       } else {
-        Swal.fire("Error!", response.data.message || "Login failed.", "error");
+        Swal.fire("Error!", response.message || "Login failed.", "error");
       }
     } catch (error) {
       console.error("Error: ", error);
       Swal.fire(
         "Error!",
-        error.response?.data?.message || "An error occurred.",
+        error.response?.message || "An error occurred.",
         "error"
       );
     }

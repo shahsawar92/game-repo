@@ -151,7 +151,7 @@ const EditAdmin = ({ admin }) => {
           <div className='flex flex-col max-w-3xl rounded-xl p-4 '>
             <button
               onClick={() => {
-                router.push(`/change-password/${admin.id}`);
+                router.push(`/change-password/${admin.id}/${admin.email}`);
               }}
               className='flex justify-center items-center gap-2 border-gradient bg-liteprpl p-3 text-white rounded-md w-full py-2'>
               Change Password
