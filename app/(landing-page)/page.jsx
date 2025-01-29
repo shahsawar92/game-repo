@@ -99,7 +99,7 @@ export default function Login() {
       allowOutsideClick: false,
       preConfirm: () => {
         return {
-          email: "shahsawarpro@gmail.com",
+          email: email,
           reset_code: document.getElementById("swal-input1").value,
           password: document.getElementById("swal-input2").value,
           password_confirmation: document.getElementById("swal-input3").value,
